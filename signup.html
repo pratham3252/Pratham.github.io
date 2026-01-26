@@ -4,34 +4,39 @@
   <title>Signup</title>
 
   <style>
-    body{
-      margin:0;
-      height:100vh;
-      background-image: url("bg.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font-family:Arial;
-    }
+   body{
+  margin:0;
+  height:100vh;
+  position: relative;
 
-    .overlay{
-      position:absolute;
-      inset:0;
-      background:rgba(0,0,0,0.6);
-    }
+  background-image: url("pratham.github.io/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-    .auth-box{
-      position:relative;
-      background:#1e1e1e;
-      padding:30px;
-      width:320px;
-      border-radius:10px;
-      text-align:center;
-      z-index:1;
-    }
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial;
+}
+
+
+   .overlay{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.6);
+  z-index:0;
+}
+
+   .auth-box{
+  position: relative;
+  z-index: 1;
+  background:#1e1e1e;
+  padding:30px;
+  width:320px;
+  border-radius:10px;
+}
+
 
     h2,p{ color:white; }
 
