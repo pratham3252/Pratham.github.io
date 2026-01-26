@@ -2,71 +2,86 @@
 <html>
 <head>
   <title>Signup</title>
+
   <style>
     body{
-  background:#121212;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  font-family:Arial;
-}
+      margin:0;
+      height:100vh;
+      background: url("bg.jpg") no-repeat center center/cover;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-family:Arial;
+    }
 
-.auth-box{
-  background:#1e1e1e;
-  padding:30px;
-  width:320px;
-  border-radius:10px;
-  text-align:center;
-}
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.6);
+    }
 
-.auth-box input{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  border-radius:5px;
-  border:none;
-}
+    .auth-box{
+      position:relative;
+      background:#1e1e1e;
+      padding:30px;
+      width:320px;
+      border-radius:10px;
+      text-align:center;
+      z-index:1;
+    }
 
-.auth-box button{
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  background:#1db954;
-  border:none;
-  font-weight:bold;
-  cursor:pointer;
-}
+    h2,p{ color:white; }
 
-.google-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  background:white;
-  color:black;
-}
+    input{
+      width:100%;
+      padding:10px;
+      margin:8px 0;
+      border-radius:5px;
+      border:none;
+    }
 
-.google-btn img{
-  width:18px;
-}
+    button{
+      width:100%;
+      padding:10px;
+      margin-top:10px;
+      background:#1db954;
+      border:none;
+      font-weight:bold;
+      cursor:pointer;
+    }
 
-.divider{
-  margin:15px 0;
-  color:#aaa;
-}
+    .google-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      background:white;
+      color:black;
+    }
 
-a{ color:#1db954; }
-    p,h2{color: white;}
+    .google-btn img{
+      width:18px;
+    }
+
+    .divider{
+      margin:15px 0;
+      color:#aaa;
+    }
+
+    a{ color:#1db954; }
   </style>
 </head>
+
 <body>
+
+<div class="overlay"></div>
 
 <div class="auth-box">
   <h2>Create Account</h2>
 
   <input id="email" type="email" placeholder="Email">
   <input id="password" type="password" placeholder="Password">
+
   <button onclick="emailSignup()">Signup</button>
 
   <div class="divider">OR</div>
@@ -93,15 +108,15 @@ import {
 const provider = new GoogleAuthProvider();
 
 window.emailSignup = () => {
-  createUserWithEmailAndPassword(auth,email.value,password.value)
-    .then(()=>location.replace("index.html"))
-    .catch(e=>alert(e.message));
+  createUserWithEmailAndPassword(auth, email.value, password.value)
+    .then(() => location.replace("index.html"))
+    .catch(err => alert(err.message));
 };
 
 window.googleSignup = () => {
   signInWithPopup(auth, provider)
-    .then(()=>location.replace("index.html"))
-    .catch(e=>alert(e.message));
+    .then(() => location.replace("index.html"))
+    .catch(err => alert(err.message));
 };
 </script>
 
