@@ -461,8 +461,9 @@ nav.navbar a:hover {
     <p class="hero-lang" id="heroLang"></p>
     <p class="hero-rank" id="heroRank"></p>
     <p class="hero-desc" id="heroDesc"></p>
-    <div class="btn" onclick="watchMovie()">Watch Now</div>
+    <div class="btn" id="playMovie" onclick="watchMovie()">Watch Now</div>
   </div>
+
   <div class="nav-arrow nav-left" id="prevBtn">&#10094;</div>
   <div class="nav-arrow nav-right" id="nextBtn">&#10095;</div>
 </section>
@@ -1105,8 +1106,24 @@ window.logout = function () {
   });
 };
 </script>
+<script type="module">
+import { addDoc, collection, serverTimestamp } from 
+"https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+playMovie.onclick = async () => {
+  await addDoc(collection(db, "activity_logs"), {
+    userId: "guest_user",
+    type: "movie",
+    itemId: "movie_101",
+    action: "watch",
+    timestamp: serverTimestamp()
+  });
+};
+</script>
+
 </body>
 </html>
+
 
 
 
